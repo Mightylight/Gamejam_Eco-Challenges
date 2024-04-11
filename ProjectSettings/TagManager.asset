@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Trash
+  - Plastic
+  - Food
+  - Animal
   layers:
   - Default
   - TransparentFX
