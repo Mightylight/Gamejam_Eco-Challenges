@@ -70,6 +70,13 @@ public class HighscoreCounter : MonoBehaviour
        }
        Debug.Log("Highscores: " + string.Join(",", highscores));
        
+       highscores.Add(highscore);
+       highscores.Sort((a, b) => b.CompareTo(a));
+       if (highscores.Count > 5)
+       {
+           highscores = highscores.GetRange(0, 5);
+       }
+       
        Debug.Log("Highscores: " + string.Join(",", highscores));
        PlayerPrefs.SetString("HighScores", string.Join(",", highscores));
        
