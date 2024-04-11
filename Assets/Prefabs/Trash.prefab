@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5515200172770609092}
   - component: {fileID: 4698348484762419194}
   - component: {fileID: 5954493016264667694}
-  - component: {fileID: 5010889927176948595}
   - component: {fileID: 4849572263915671682}
-  - component: {fileID: 3740443781303266126}
+  - component: {fileID: 2817629105019019494}
+  - component: {fileID: 7891497047615110549}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Trash
@@ -86,29 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5010889927176948595
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8351121526519104884}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &4849572263915671682
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3740443781303266126
+--- !u!114 &2817629105019019494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,7 +122,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 8351121526519104884}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02166f2b76954a74e8f4f4744eb57142, type: 3}
+  m_Script: {fileID: 11500000, guid: 8daa9e0769e11a4478255acc23c6c531, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shorePosition: 1
+  itemType: 0
+  rb: {fileID: 4849572263915671682}
+--- !u!136 &7891497047615110549
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8351121526519104884}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

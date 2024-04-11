@@ -7,6 +7,9 @@ public class TrashSpawner : MonoBehaviour
     public float spawnDistance = 10f; // Distance above the camera
     public float fallSpeed = 5f; // Speed at which the trash falls
 
+    [SerializeField] private GameObject[] spawnPoints;
+    
+
     private float nextSpawnTime = 0f;
 
     void Update()
@@ -21,8 +24,9 @@ public class TrashSpawner : MonoBehaviour
     void SpawnTrash()
     {
         // Calculate random x position within the screen width
-        float randomX = Random.Range(0f, 1f);
-        Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 1f, spawnDistance));
+        //float randomX = Random.Range(0f, 1f);
+        //Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 1f, spawnDistance));
+        Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
 
         // Instantiate trash at spawn position
         GameObject trash = Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
