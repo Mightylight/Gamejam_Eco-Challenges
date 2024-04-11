@@ -5,7 +5,7 @@ public class TimerCountdown : MonoBehaviour
 {
     public Slider timerSlider;
     public float initialGameTime; // Initial time for the countdown
-    private float gameTimeRemaining; // Remaining time for the countdown
+    [SerializeField] private float gameTimeRemaining; // Remaining time for the countdown
     public Color startColor = Color.green;
     public Color middleColor = Color.yellow;
     public Color endColor = Color.red;

@@ -14,13 +14,32 @@ public class CharacterController : MonoBehaviour
     
     
     [SerializeField] private Rigidbody rb;
+
+    [SerializeField] private AudioClip[] pickupSounds;
+    [SerializeField] private AudioClip dropOffSound;
+    [SerializeField] private AudioClip[] walkingSounds;
+    
+    
+    private float lastStartTime;
+    private float cooldownTime = 1;
+    
+    private bool pressedInteract = false;
+    
+    
     
     
     
     //Add variable for items carried
     //public List<ThrashItem> itemsCarried = new ();
-    public ThrashItem itemCarrying;
+    
+    //public ThrashItem itemCarrying;
+    private Queue<ThrashItem> itemsCarried;
 
+    private void Awake()
+    {
+        itemsCarried = new Queue<ThrashItem>();
+        lastStartTime = Time.time;
+    }
 
     private void FixedUpdate()
     {
@@ -89,37 +108,45 @@ public class CharacterController : MonoBehaviour
             // rb.velocity = new Vector3(speed, 0,0);
             movement += new Vector3(speed,0,0);
         }
-        
+
+        if (movement != Vector3.zero)
+        {
+            int random = UnityEngine.Random.Range(0, 100);
+            if (random < 5)
+            {
+                SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
+            }
+        }
         rb.velocity = movement;
     }
 
-    private void OnCollisionEnter(Collision other)
-    {
-        //switch case for player type, player 1 picks up with E, player 2 picks up with right shift
-        switch (playerType)
-        {
-            case PlayerType.Player1:
-                if (Input.GetKey(KeyCode.E))
-                {
-                    CheckForThrashItem(other);
-
-                    CheckForTrashCan(other);
-                }
-                break;
-            case PlayerType.Player2:
-                if (Input.GetKey(KeyCode.RightShift))
-                {
-                    CheckForThrashItem(other);
-
-                    CheckForTrashCan(other);
-                }
-                
-                
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
-        }
-    }
+    // private void OnCollisionEnter(Collision other)
+    // {
+    //     //switch case for player type, player 1 picks up with E, player 2 picks up with right shift
+    //     switch (playerType)
+    //     {
+    //         case PlayerType.Player1:
+    //             if (Input.GetKeyUp(KeyCode.E))
+    //             {
+    //                 CheckForThrashItem(other);
+    //
+    //                 CheckForTrashCan(other);
+    //             }
+    //             break;
+    //         case PlayerType.Player2:
+    //             if (Input.GetKeyUp(KeyCode.RightShift))
+    //             {
+    //                 CheckForThrashItem(other);
+    //
+    //                 CheckForTrashCan(other);
+    //             }
+    //             
+    //             
+    //             break;
+    //         default:
+    //             throw new ArgumentOutOfRangeException();
+    //     }
+    // }
 
     
 
@@ -129,7 +156,7 @@ public class CharacterController : MonoBehaviour
         switch (playerType)
         {
             case PlayerType.Player1:
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKeyUp(KeyCode.E))
                 {
                     CheckForThrashItem(other);
 
@@ -137,7 +164,7 @@ public class CharacterController : MonoBehaviour
                 }
                 break;
             case PlayerType.Player2:
-                if (Input.GetKey(KeyCode.RightShift))
+                if (Input.GetKeyUp(KeyCode.RightShift))
                 {
                     CheckForThrashItem(other);
 
@@ -148,17 +175,39 @@ public class CharacterController : MonoBehaviour
                 throw new ArgumentOutOfRangeException();
         }
     }
+
+    private IEnumerator StopClicking()
+    {
+        Debug.Log("Wollah nif");
+        yield return new WaitForSeconds(1);
+        Debug.Log("Wollah nif 2");
+        pressedInteract = false;
+        
+    }
     
     private void CheckForTrashCan(Collision other)
     {
         other.gameObject.TryGetComponent(out Trashcan trashcan);
         if (trashcan != null)
         {
-            if (itemCarrying != null)
+            Debug.Log("pressedInteract: " + pressedInteract);
+            if (pressedInteract) return;
+            pressedInteract = true;
+            StartCoroutine(StopClicking());
+            if (itemsCarried.Count > 0)
             {
-                trashcan.PutTrashInTrashcan(itemCarrying.gameObject);
-                Destroy(itemCarrying.gameObject);
-                itemCarrying = null;
+                ThrashItem item = itemsCarried.Dequeue();
+                trashcan.PutTrashInTrashcan(item.gameObject);
+                Destroy(item.gameObject);
+                Debug.Log("Destroyed Items");
+                Debug.Log("Items carried: " + itemsCarried.Count);
+                foreach (ThrashItem remainingItem in itemsCarried)
+                {
+                    remainingItem.transform.localPosition += new Vector3(0,-1,0);
+                    Debug.Log("Moved items down");
+                }
+                
+                SoundFXManager.instance.PlaySoundFXClip(dropOffSound,1f);
             }
         }
     }
@@ -168,12 +217,15 @@ public class CharacterController : MonoBehaviour
         other.gameObject.TryGetComponent(out ThrashItem item);
         if (item != null)
         {
-            if (itemCarrying == null)
+            if (itemsCarried.Count < carryingCapacity)
             {
-                itemCarrying = item;
-                itemCarrying.transform.SetParent(transform);
-                itemCarrying.transform.localPosition = new Vector3(0, 1, 0);
+                Debug.Log("Picking up items");
+                itemsCarried.Enqueue(item);
+                item.transform.SetParent(transform);
+                int index = itemsCarried.Count - 1;
+                item.transform.localPosition = new Vector3(0,index + 1 , 0);
                 Destroy(item.GetComponent<Rigidbody>());
+                SoundFXManager.instance.PlayRandomSoundFXClip(pickupSounds,1f);
             }
         }
     }
