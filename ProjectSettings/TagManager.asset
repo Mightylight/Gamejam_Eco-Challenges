@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Trash
   - ThrashBarrier
+  - Plastic
+  - Food
+  - Animal
   layers:
   - Default
   - TransparentFX
