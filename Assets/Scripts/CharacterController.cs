@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using AzraScripts;
 
 public class CharacterController : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class CharacterController : MonoBehaviour
     
     
     //Add variable for items carried
-    public List<ThrashItem> itemsCarried = new ();
+    //public List<ThrashItem> itemsCarried = new ();
+    public ThrashItem itemCarrying;
 
 
     private void FixedUpdate()
@@ -99,36 +101,28 @@ public class CharacterController : MonoBehaviour
             case PlayerType.Player1:
                 if (Input.GetKey(KeyCode.E))
                 {
-                    other.gameObject.TryGetComponent(out ThrashItem item);
-                    if (item != null)
-                    {
-                        if (itemsCarried.Count < carryingCapacity)
-                        {
-                            itemsCarried.Add(item);
-                            item.gameObject.SetActive(false);
-                        }
-                    }
+                    CheckForThrashItem(other);
+
+                    CheckForTrashCan(other);
                 }
                 break;
             case PlayerType.Player2:
                 if (Input.GetKey(KeyCode.RightShift))
                 {
-                    other.gameObject.TryGetComponent(out ThrashItem item);
-                    if (item != null)
-                    {
-                        if (itemsCarried.Count < carryingCapacity)
-                        {
-                            itemsCarried.Add(item);
-                            item.gameObject.SetActive(false);
-                        }
-                    }
+                    CheckForThrashItem(other);
+
+                    CheckForTrashCan(other);
                 }
+                
+                
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
+
     
+
     private void OnCollisionStay(Collision other)
     {
         //switch case for player type, player 1 picks up with E, player 2 picks up with right shift
@@ -137,35 +131,53 @@ public class CharacterController : MonoBehaviour
             case PlayerType.Player1:
                 if (Input.GetKey(KeyCode.E))
                 {
-                    other.gameObject.TryGetComponent(out ThrashItem item);
-                    if (item != null)
-                    {
-                        if (itemsCarried.Count < carryingCapacity)
-                        {
-                            itemsCarried.Add(item);
-                            item.gameObject.SetActive(false);
-                        }
-                    }
+                    CheckForThrashItem(other);
+
+                    CheckForTrashCan(other);
                 }
                 break;
             case PlayerType.Player2:
                 if (Input.GetKey(KeyCode.RightShift))
                 {
-                    other.gameObject.TryGetComponent(out ThrashItem item);
-                    if (item != null)
-                    {
-                        if (itemsCarried.Count < carryingCapacity)
-                        {
-                            itemsCarried.Add(item);
-                            item.gameObject.SetActive(false);
-                        }
-                    }
+                    CheckForThrashItem(other);
+
+                    CheckForTrashCan(other);
                 }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
     }
+    
+    private void CheckForTrashCan(Collision other)
+    {
+        other.gameObject.TryGetComponent(out Trashcan trashcan);
+        if (trashcan != null)
+        {
+            if (itemCarrying != null)
+            {
+                trashcan.PutTrashInTrashcan(itemCarrying.gameObject);
+                Destroy(itemCarrying.gameObject);
+                itemCarrying = null;
+            }
+        }
+    }
+
+    private void CheckForThrashItem(Collision other)
+    {
+        other.gameObject.TryGetComponent(out ThrashItem item);
+        if (item != null)
+        {
+            if (itemCarrying == null)
+            {
+                itemCarrying = item;
+                itemCarrying.transform.SetParent(transform);
+                itemCarrying.transform.localPosition = new Vector3(0, 1, 0);
+                Destroy(item.GetComponent<Rigidbody>());
+            }
+        }
+    }
+    
 }
 
 [Serializable]

@@ -26,7 +26,15 @@ public class TrashSpawner : MonoBehaviour
         // Calculate random x position within the screen width
         //float randomX = Random.Range(0f, 1f);
         //Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 1f, spawnDistance));
-        Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+        
+        //pick a random spawn point between 0 and 1 of the spawnpoints array
+        Vector3 spawnpoint1 = spawnPoints[0].transform.position;
+        Vector3 spawnpoint2 = spawnPoints[1].transform.position;
+        
+        Vector3 spawnPosition = Vector3.Lerp(spawnpoint1, spawnpoint2, Random.Range(0f, 1f));
+        
+        
+        //Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
 
         // Instantiate trash at spawn position
         GameObject trash = Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
