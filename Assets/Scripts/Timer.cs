@@ -46,6 +46,7 @@ public class TimerCountdown : MonoBehaviour
             if (gameTimeRemaining <= 0)
             {
                 stopTimer = true;
+                HighscoreCounter.Instance.GameOver();
             }
         }
     }
