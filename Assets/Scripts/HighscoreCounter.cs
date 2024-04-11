@@ -12,7 +12,12 @@ public class HighscoreCounter : MonoBehaviour
     
     public int highscore = 0;
     [SerializeField] private GameObject gameoverMenu;
+    [SerializeField] private TMP_Text gameOverHighscoreText;
+
     [SerializeField] private TMP_Text highscoreText;
+    [SerializeField] private Slider highscoreSlider;
+    
+    
     
     
     
@@ -30,7 +35,20 @@ public class HighscoreCounter : MonoBehaviour
             return instance;
         }
     }
-    
+
+    private void Update()
+    {
+        highscoreText.text = $"Score: {highscore}";
+        if (highscore > highscoreSlider.maxValue)
+        {
+            highscoreSlider.value = highscoreSlider.maxValue;
+        }
+        else
+        {
+            highscoreSlider.value = highscore;
+        }
+    }
+
     public void AddToHighscore(int points)
     {
         highscore += points;
@@ -82,7 +100,7 @@ public class HighscoreCounter : MonoBehaviour
        
        //Do popup with highscores
        gameoverMenu.SetActive(true);
-       highscoreText.text = $"Highscore: {highscore}\n";
+       gameOverHighscoreText.text = $"Highscore: {highscore}\n";
     }
     
     public void ToMainMenu()
