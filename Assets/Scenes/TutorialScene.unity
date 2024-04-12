@@ -255,15 +255,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Clean up as much trash as possible in the given time.
+  m_text: 'Score points by cleaning up trash before the time runs out.
 
 
-    Pick it up,
-    avoid obstacles and throw the trash in the correct bins.
+    Pick
+    it up, avoid obstacles and throw the trash in the correct bins.
 
 
-    Teamwork is essential
-    for getting highscores!'
+    The fish
+    are fired back with the cannon!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e807d2f3966920468b922710fa1e9c7, type: 2}
   m_sharedMaterial: {fileID: -8621952200514715445, guid: 1e807d2f3966920468b922710fa1e9c7,
@@ -291,7 +291,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.35
+  m_fontSize: 37.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5d7293af4843f5d40b5b2831937042e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ecf2177aff6c8614d86f4bee5e0577b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ecf2177aff6c8614d86f4bee5e0577b1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d7293af4843f5d40b5b2831937042e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1113,8 +1113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.045850143, y: 0.034539476}
   m_AnchorMax: {x: 0.3695504, y: 0.7993553}
-  m_AnchoredPosition: {x: 687.93, y: 53.11206}
-  m_SizeDelta: {x: -113.2325, y: -318.0794}
+  m_AnchoredPosition: {x: 687.93, y: 40.113434}
+  m_SizeDelta: {x: -113.2325, y: -292.0822}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027323848
 MonoBehaviour:
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_text: 'Speed: Slow
 
 
-    Can carry two items at once'
+    Can carry two items at once and push obstacles'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1e807d2f3966920468b922710fa1e9c7, type: 2}
   m_sharedMaterial: {fileID: -8621952200514715445, guid: 1e807d2f3966920468b922710fa1e9c7,
@@ -1167,12 +1167,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32.8
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 36
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 32
   m_VerticalAlignment: 256
@@ -1517,12 +1517,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.2
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 36
+  m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 32
   m_VerticalAlignment: 256
