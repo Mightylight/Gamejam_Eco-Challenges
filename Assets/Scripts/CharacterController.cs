@@ -244,7 +244,8 @@ public class CharacterController : MonoBehaviour
                 itemsCarried.Enqueue(item);
                 item.transform.SetParent(transform);
                 int index = itemsCarried.Count - 1;
-                item.transform.localPosition = new Vector3(0,index + 1 , 0);
+                item.transform.localPosition = new Vector3(0,index + 1.5f , 0);
+                item.transform.localRotation = Quaternion.identity;
                 Destroy(item.GetComponent<Rigidbody>());
                 //SoundFXManager.instance.PlayRandomSoundFXClip(pickupSounds,1f);
             }
