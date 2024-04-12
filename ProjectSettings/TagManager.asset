@@ -9,6 +9,7 @@ TagManager:
   - Plastic
   - Food
   - Animal
+  - Water
   layers:
   - Default
   - TransparentFX
