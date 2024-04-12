@@ -67,7 +67,32 @@ PrefabInstance:
     - target: {fileID: 7403136819873005181, guid: e040642c47f30ae4a8de7fc4000ccc3f,
         type: 3}
       propertyPath: m_Name
-      value: Bottle Variant
+      value: Bottle3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706369597911756920, guid: e040642c47f30ae4a8de7fc4000ccc3f,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.9623497
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706369597911756920, guid: e040642c47f30ae4a8de7fc4000ccc3f,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.2877245
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706369597911756920, guid: e040642c47f30ae4a8de7fc4000ccc3f,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.0050938427
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706369597911756920, guid: e040642c47f30ae4a8de7fc4000ccc3f,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.000030636787
+      objectReference: {fileID: 0}
+    - target: {fileID: 7706369597911756920, guid: e040642c47f30ae4a8de7fc4000ccc3f,
+        type: 3}
+      propertyPath: m_Direction
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

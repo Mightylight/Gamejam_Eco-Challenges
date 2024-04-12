@@ -28,7 +28,7 @@ public class TrashSpawner : MonoBehaviour
     void SpawnTrash()
     {
         // Calculate random x position within the screen width
-        float randomX = UnityEngine.Random.Range(0.1f, 0.9f);
+        float randomX = UnityEngine.Random.Range(0.2f, 0.8f);
         Vector3 spawnPosition = new Vector3(
             randomX * Screen.width, 550f, 30f
         );
