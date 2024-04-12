@@ -1,40 +1,39 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class TrashSpawner : MonoBehaviour
 {
     public GameObject trashPrefab;
     public float spawnRate = 2f; // Adjust as needed
-    public float spawnDistance = 10f; // Distance above the camera
     public float fallSpeed = 5f; // Speed at which the trash falls
+    public float floatDuration = 1f; // Duration for the trash to float up
+    public LayerMask waterLayer; // Layer mask for the water plane
 
     [SerializeField] private GameObject[] spawnPoints;
-    
 
-    private float nextSpawnTime = 0f;
+    private float nextSpawnTime = 0;
+
 
     void Update()
     {
         if (Time.time >= nextSpawnTime)
         {
             SpawnTrash();
-            nextSpawnTime = Time.time + 1f / spawnRate;
+            nextSpawnTime = Time.time + UnityEngine.Random.Range(0f, 2f) / spawnRate;
         }
     }
 
     void SpawnTrash()
     {
         // Calculate random x position within the screen width
-        //float randomX = Random.Range(0f, 1f);
-        //Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomX, 1f, spawnDistance));
-        
-        //pick a random spawn point between 0 and 1 of the spawnpoints array
-        Vector3 spawnpoint1 = spawnPoints[0].transform.position;
-        Vector3 spawnpoint2 = spawnPoints[1].transform.position;
-        
-        Vector3 spawnPosition = Vector3.Lerp(spawnpoint1, spawnpoint2, Random.Range(0f, 1f));
-        
-        
-        //Vector3 spawnPosition = spawnPoints[Random.Range(0, spawnPoints.Length)].transform.position;
+        float randomX = UnityEngine.Random.Range(0.1f, 0.9f);
+        Vector3 spawnPosition = new Vector3(
+            randomX * Screen.width, 550f, 30f
+        );
+
+        // Convert screen coordinates to world coordinates
+        spawnPosition = Camera.main.ScreenToWorldPoint(spawnPosition);
 
         // Instantiate trash at spawn position
         GameObject trash = Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
@@ -44,6 +43,23 @@ public class TrashSpawner : MonoBehaviour
         if (trashRb != null)
         {
             trashRb.velocity = Vector3.down * fallSpeed;
+
+            // Start coroutine to float the trash up for a duration
+            StartCoroutine(FloatTrashUp(trash));
         }
+    }
+
+    IEnumerator FloatTrashUp(GameObject trashObject)
+    {
+        Vector3 initialPosition = trashObject.transform.position;
+        Vector3 targetPosition = initialPosition + Vector3.up * 2f; // Move the object up by 10 units
+        float elapsedTime = 0f;
+        while (elapsedTime < floatDuration)
+        {
+            // Interpolate between initial and target positions over time
+            trashObject.transform.position = Vector3.Lerp(initialPosition, targetPosition, elapsedTime / floatDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }   
     }
 }
