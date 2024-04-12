@@ -7,6 +7,13 @@ namespace AzraScripts
         public string[] allowedTags; // Tags that this trashcan can destroy
         [SerializeField] private Animator animator;
         [SerializeField] private bool isSalmonCannon;
+
+        [SerializeField] private AudioClip correctDropoffSound;
+        [SerializeField] private AudioClip incorrectDropoffSound;
+        [SerializeField] private AudioClip salmonCannonSound;
+        
+        
+        
         
         
 
@@ -39,6 +46,7 @@ namespace AzraScripts
                     if (!isSalmonCannon)
                     {
                         animator.SetTrigger("ItemDeposited");
+                        SoundFXManager.instance.PlaySoundFXClip(correctDropoffSound, 1f);
                         Destroy(trash);
                     }
                     else
@@ -56,6 +64,8 @@ namespace AzraScripts
                     {
                         HighscoreCounter.Instance.AddToHighscore(-1);
                     }
+                    
+                    SoundFXManager.instance.PlaySoundFXClip(incorrectDropoffSound, 0.5f);
                     animator.SetTrigger("ItemDeposited");
                     Destroy(trash);
                 }

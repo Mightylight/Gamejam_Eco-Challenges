@@ -103,6 +103,11 @@ MonoBehaviour:
   allowedTags:
   - Plastic
   animator: {fileID: 1526098032219409978}
+  isSalmonCannon: 0
+  correctDropoffSound: {fileID: 8300000, guid: 72115c01ee20ed2469cfd22cb21961e4, type: 3}
+  incorrectDropoffSound: {fileID: 8300000, guid: 5d5adf1cab5b1574c9b9219226580fc6,
+    type: 3}
+  salmonCannonSound: {fileID: 8300000, guid: c5df959c889abb445802ec34427fb28c, type: 3}
 --- !u!136 &4739685151717047048
 CapsuleCollider:
   m_ObjectHideFlags: 0

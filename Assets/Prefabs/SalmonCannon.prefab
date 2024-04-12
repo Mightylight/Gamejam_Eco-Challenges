@@ -155,3 +155,5 @@ MonoBehaviour:
   salmonPrefab: {fileID: 0}
   launchSpeed: 10
   spawnPoint: {fileID: 0}
+  salmonFire: {fileID: 8300000, guid: c5df959c889abb445802ec34427fb28c, type: 3}
+  salmonLoad: {fileID: 8300000, guid: 097bc9dc219511545bf18b8da1c7afc6, type: 3}

@@ -108,6 +108,6 @@ public class HighscoreCounter : MonoBehaviour
         gameoverMenu.SetActive(false);
         ResetHighscore();
         Debug.Log("I am here");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
 }

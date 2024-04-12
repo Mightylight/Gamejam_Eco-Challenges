@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SemScene.unity
     guid: 32fe9d7330dc42f4c8cee78ca7fb36d5
   - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: d214ab27d40d48a439fa96741aa35b33
+  - enabled: 1
     path: Assets/Scenes/CollinBasCombined.unity
     guid: 61550857ab45bbf4180482aa36eef95b
   - enabled: 0

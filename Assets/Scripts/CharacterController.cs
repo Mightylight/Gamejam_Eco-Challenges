@@ -225,10 +225,9 @@ public class CharacterController : MonoBehaviour
                 Debug.Log("Items carried: " + itemsCarried.Count);
                 foreach (ThrashItem remainingItem in itemsCarried)
                 {
-                    remainingItem.transform.localPosition += new Vector3(0,-1,0);
+                    remainingItem.transform.localPosition += new Vector3(0, -1, 0);
                     Debug.Log("Moved items down");
                 }
-                SoundFXManager.instance.PlaySoundFXClip(dropOffSound,1f);
             }
         }
     }
