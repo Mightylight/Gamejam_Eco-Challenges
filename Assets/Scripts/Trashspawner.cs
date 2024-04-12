@@ -53,7 +53,7 @@ public class TrashSpawner : MonoBehaviour
     IEnumerator FloatTrashUp(GameObject trashObject)
     {
         Vector3 initialPosition = trashObject.transform.position;
-        Vector3 targetPosition = initialPosition + Vector3.up * 7.5f; // Move the object up by 10 units
+        Vector3 targetPosition = initialPosition + Vector3.up * 8.5f; // Move the object up by 10 units
         float elapsedTime = 0f;
         while (elapsedTime < floatDuration)
         {

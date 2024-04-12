@@ -3078,7 +3078,7 @@ MonoBehaviour:
   - {fileID: 1198403663987260188, guid: 4fc7f72605f68a84983089e9b1a9d73f, type: 3}
   - {fileID: 6786632529205263438, guid: e9ce2463eab2c4548a20b79c65a2e4d8, type: 3}
   spawnRate: 0.3
-  fallSpeed: 5
+  fallSpeed: 8
   floatDuration: 5
   waterLayer:
     serializedVersion: 2
