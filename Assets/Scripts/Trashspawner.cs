@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class TrashSpawner : MonoBehaviour
 {
-    public GameObject trashPrefab;
+    public GameObject[] oceanObjectsToSpawn;
     public float spawnRate = 2f; // Adjust as needed
     public float fallSpeed = 5f; // Speed at which the trash falls
     public float floatDuration = 1f; // Duration for the trash to float up
@@ -36,7 +37,7 @@ public class TrashSpawner : MonoBehaviour
         spawnPosition = Camera.main.ScreenToWorldPoint(spawnPosition);
 
         // Instantiate trash at spawn position
-        GameObject trash = Instantiate(trashPrefab, spawnPosition, Quaternion.identity);
+        GameObject trash = Instantiate(oceanObjectsToSpawn[Random.Range(0,oceanObjectsToSpawn.Length)], spawnPosition, Quaternion.identity);
 
         // Make the trash fall
         Rigidbody trashRb = trash.GetComponent<Rigidbody>();

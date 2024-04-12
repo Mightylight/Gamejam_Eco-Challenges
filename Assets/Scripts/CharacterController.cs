@@ -89,7 +89,7 @@ public class CharacterController : MonoBehaviour
             int random = UnityEngine.Random.Range(0, 100);
             if (random < 5)
             {
-                //SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
+                SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
             }
             animator.SetBool("isWalking", true);
         }
@@ -131,7 +131,7 @@ public class CharacterController : MonoBehaviour
             int random = UnityEngine.Random.Range(0, 100);
             if (random < 5)
             {
-                //SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
+                SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
             }
             animator.SetBool("isWalking", true);
         }
@@ -228,7 +228,7 @@ public class CharacterController : MonoBehaviour
                     remainingItem.transform.localPosition += new Vector3(0,-1,0);
                     Debug.Log("Moved items down");
                 }
-                //SoundFXManager.instance.PlaySoundFXClip(dropOffSound,1f);
+                SoundFXManager.instance.PlaySoundFXClip(dropOffSound,1f);
             }
         }
     }
@@ -247,7 +247,7 @@ public class CharacterController : MonoBehaviour
                 item.transform.localPosition = new Vector3(0,index + 1.5f , 0);
                 item.transform.localRotation = Quaternion.identity;
                 Destroy(item.GetComponent<Rigidbody>());
-                //SoundFXManager.instance.PlayRandomSoundFXClip(pickupSounds,1f);
+                SoundFXManager.instance.PlayRandomSoundFXClip(pickupSounds,1f);
             }
         }
     }

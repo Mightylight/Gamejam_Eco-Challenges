@@ -10,6 +10,7 @@ TagManager:
   - Food
   - Animal
   - Water
+  - Other
   layers:
   - Default
   - TransparentFX
