@@ -18,6 +18,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private AudioClip[] pickupSounds;
     [SerializeField] private AudioClip dropOffSound;
     [SerializeField] private AudioClip[] walkingSounds;
+
+    [SerializeField] private Animator animator;
+    
     
     
     private float lastStartTime;
@@ -81,6 +84,20 @@ public class CharacterController : MonoBehaviour
             movement += new Vector3(speed,0,0);
         }
         
+        if (movement != Vector3.zero)
+        {
+            int random = UnityEngine.Random.Range(0, 100);
+            if (random < 5)
+            {
+                //SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
+            }
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+        }
+        
         rb.velocity = movement;
     }
     private void MovePlayer2()
@@ -114,8 +131,13 @@ public class CharacterController : MonoBehaviour
             int random = UnityEngine.Random.Range(0, 100);
             if (random < 5)
             {
-                SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
+                //SoundFXManager.instance.PlayRandomSoundFXClip(walkingSounds,1f);
             }
+            animator.SetBool("isWalking", true);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
         }
         rb.velocity = movement;
     }
