@@ -16,7 +16,7 @@ public class SalmonCannon : MonoBehaviour
 
     private IEnumerator LaunchSalmonCoroutine(GameObject pFish)
     {
-        pFish.transform.parent = null;
+        pFish.transform.parent = spawnPoint;
         while (spawnPoint.position != pFish.transform.position)
         {
             pFish.transform.position = Vector3.MoveTowards(pFish.transform.position, spawnPoint.position, 0.1f);

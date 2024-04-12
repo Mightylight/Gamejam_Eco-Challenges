@@ -2794,7 +2794,7 @@ MonoBehaviour:
   - {fileID: 5109674010242538752, guid: 42eecb168c66fff42b2bb94234676dd8, type: 3}
   - {fileID: 2422614264537558169, guid: 59b560cb29a9ca04889fb51664ca64a0, type: 3}
   - {fileID: 7923821154695019522, guid: c7347b0591385d544b0661827e20a102, type: 3}
-  spawnRate: 0.1
+  spawnRate: 0.5
   fallSpeed: 5
   floatDuration: 5
   waterLayer:

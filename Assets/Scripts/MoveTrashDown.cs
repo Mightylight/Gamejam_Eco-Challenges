@@ -14,6 +14,7 @@ public class WaterInteraction : MonoBehaviour
 
             // Move the object downwards
             //transform.Translate(-Vector3.forward * descentSpeed * Time.deltaTime);
+            if(rb == null) return;
             rb.AddForce(-Vector3.forward * descentSpeed);
             Debug.Log("look ma no hands");
         }
