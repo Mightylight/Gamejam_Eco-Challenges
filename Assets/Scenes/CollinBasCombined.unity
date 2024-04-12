@@ -1072,6 +1072,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2718213498024946703, guid: a9e7ed74245acfd469e2290d33731040,
+        type: 3}
+      propertyPath: m_Mass
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4678873777527159936, guid: a9e7ed74245acfd469e2290d33731040,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1409,7 +1414,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obstacles:
-  - {fileID: 1070541524803422014, guid: 34a1ec294efde0942826b634d66d92c3, type: 3}
+  - {fileID: 6176908731367070595, guid: 1764e1985e69eaf42ab5ac0b9569fdf2, type: 3}
+  - {fileID: 1704727247254102826, guid: 9b57d9d566fa78049a085f0aab8fd840, type: 3}
   spawnInterval: 5
   cubeLifetime: 10
   spawningArea: {fileID: 826114326}
