@@ -22,7 +22,7 @@ public class ThrashItem : MonoBehaviour
 
 public enum ItemType
 {
-    Plastic1,
-    Plastic2,
-    Plastic3,
+    Plastic,
+    Animal,
+    Other
 }
