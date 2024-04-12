@@ -6,6 +6,8 @@ namespace AzraScripts
     {
         public string[] allowedTags; // Tags that this trashcan can destroy
         [SerializeField] private Animator animator;
+        [SerializeField] private bool isSalmonCannon;
+        
         
 
         private void OnTriggerEnter(Collider other)
@@ -34,6 +36,16 @@ namespace AzraScripts
                     {
                         HighscoreCounter.Instance.AddToHighscore(1);
                     }
+                    if (!isSalmonCannon)
+                    {
+                        animator.SetTrigger("ItemDeposited");
+                        Destroy(trash);
+                    }
+                    else
+                    {
+                        SalmonCannon cannon = GetComponent<SalmonCannon>();
+                        cannon.LaunchSalmon(trash);
+                    }
                     Debug.Log("Right trash");
                     
                 }
@@ -44,11 +56,13 @@ namespace AzraScripts
                     {
                         HighscoreCounter.Instance.AddToHighscore(-1);
                     }
+                    animator.SetTrigger("ItemDeposited");
+                    Destroy(trash);
                 }
                 //Give the player negative points
             }
             Debug.Log("Trash deposited");
-            animator.SetTrigger("ItemDeposited");
+            
         }
     }
 }

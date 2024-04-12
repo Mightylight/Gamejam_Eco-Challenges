@@ -220,7 +220,7 @@ public class CharacterController : MonoBehaviour
             {
                 ThrashItem item = itemsCarried.Dequeue();
                 trashcan.PutTrashInTrashcan(item.gameObject);
-                Destroy(item.gameObject);
+                //Destroy(item.gameObject);
                 Debug.Log("Destroyed Items");
                 Debug.Log("Items carried: " + itemsCarried.Count);
                 foreach (ThrashItem remainingItem in itemsCarried)
