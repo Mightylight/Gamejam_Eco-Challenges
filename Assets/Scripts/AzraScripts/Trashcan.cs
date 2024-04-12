@@ -5,6 +5,8 @@ namespace AzraScripts
     public class Trashcan : MonoBehaviour
     {
         public string[] allowedTags; // Tags that this trashcan can destroy
+        [SerializeField] private Animator animator;
+        
 
         private void OnTriggerEnter(Collider other)
         {
@@ -28,15 +30,25 @@ namespace AzraScripts
                 if (trash.CompareTag(tag))
                 {
                     //Give the player points
-                    HighscoreCounter.Instance.AddToHighscore(1);
+                    if (HighscoreCounter.Instance != null)
+                    {
+                        HighscoreCounter.Instance.AddToHighscore(1);
+                    }
                     Debug.Log("Right trash");
-                    return;
+                    
                 }
-                
-                Debug.Log("Wrong trash");
-                HighscoreCounter.Instance.AddToHighscore(-1);
+                else
+                {
+                    Debug.Log("Wrong trash");
+                    if (HighscoreCounter.Instance != null)
+                    {
+                        HighscoreCounter.Instance.AddToHighscore(-1);
+                    }
+                }
                 //Give the player negative points
             }
+            Debug.Log("Trash deposited");
+            animator.SetTrigger("ItemDeposited");
         }
     }
 }
