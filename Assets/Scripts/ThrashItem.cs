@@ -18,8 +18,6 @@ public class ThrashItem : MonoBehaviour
     }
 }
 
-
-
 public enum ItemType
 {
     Plastic,
